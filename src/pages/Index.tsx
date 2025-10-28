@@ -1,12 +1,360 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import Icon from "@/components/ui/icon";
+import { useState } from "react";
 
 const Index = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    message: ""
+  });
+
+  const services = [
+    {
+      icon: "Sparkles",
+      title: "Полная покраска",
+      description: "Комплексная покраска кузова с подготовкой поверхности и защитным покрытием"
+    },
+    {
+      icon: "Brush",
+      title: "Локальная покраска",
+      description: "Устранение сколов, царапин и повреждений на отдельных элементах кузова"
+    },
+    {
+      icon: "Shield",
+      title: "Антикоррозийная обработка",
+      description: "Защита металла от коррозии с использованием современных материалов"
+    },
+    {
+      icon: "Palette",
+      title: "Подбор цвета",
+      description: "Компьютерный подбор краски с точностью до оригинального оттенка"
+    }
+  ];
+
+  const pricing = [
+    {
+      name: "Базовый",
+      price: "от 25 000 ₽",
+      features: ["1-2 элемента", "Локальный ремонт", "Подбор цвета", "Гарантия 6 мес"]
+    },
+    {
+      name: "Стандарт",
+      price: "от 55 000 ₽",
+      features: ["3-5 элементов", "Полировка", "Антикор обработка", "Гарантия 1 год"],
+      popular: true
+    },
+    {
+      name: "Премиум",
+      price: "от 120 000 ₽",
+      features: ["Полная покраска", "Керамика", "Детейлинг", "Гарантия 2 года"]
+    }
+  ];
+
+  const portfolio = [
+    {
+      image: "https://cdn.poehali.dev/projects/0fc07943-09b3-45db-910b-3d60e60920f1/files/58cbd3ea-355f-4226-8ea2-a0ce4d7d29a9.jpg",
+      title: "BMW 5 Series",
+      description: "Полная покраска в metallic blue"
+    },
+    {
+      image: "https://cdn.poehali.dev/projects/0fc07943-09b3-45db-910b-3d60e60920f1/files/bd1241a8-d603-490b-bf87-29ec7a07fcfb.jpg",
+      title: "Mercedes-Benz C-Class",
+      description: "Восстановление лакокрасочного покрытия"
+    },
+    {
+      image: "https://cdn.poehali.dev/projects/0fc07943-09b3-45db-910b-3d60e60920f1/files/6b57828f-99fb-48c0-98af-387e4733ea5f.jpg",
+      title: "Audi A4",
+      description: "Локальная покраска элементов"
+    }
+  ];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <div className="min-h-screen">
+      <header className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
+        <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Icon name="Paintbrush" className="text-primary" size={32} />
+            <span className="text-xl font-bold">AutoPaint Pro</span>
+          </div>
+          <div className="hidden md:flex gap-6">
+            <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
+            <a href="#pricing" className="hover:text-primary transition-colors">Цены</a>
+            <a href="#portfolio" className="hover:text-primary transition-colors">Портфолио</a>
+            <a href="#contacts" className="hover:text-primary transition-colors">Контакты</a>
+          </div>
+          <Button size="sm">
+            <Icon name="Phone" size={16} className="mr-2" />
+            Позвонить
+          </Button>
+        </nav>
+      </header>
+
+      <section className="pt-32 pb-20 px-4">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6 animate-fade-in">
+              <Badge className="bg-primary/10 text-primary border-primary/20">
+                Профессиональная покраска автомобилей
+              </Badge>
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                Идеальное покрытие <span className="text-primary">для вашего авто</span>
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                Современное оборудование, опытные мастера и гарантия качества. 
+                Вернем вашему автомобилю заводской блеск.
+              </p>
+              <div className="flex gap-4">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  <Icon name="Calendar" size={20} className="mr-2" />
+                  Записаться
+                </Button>
+                <Button size="lg" variant="outline">
+                  <Icon name="Calculator" size={20} className="mr-2" />
+                  Расчет стоимости
+                </Button>
+              </div>
+              <div className="grid grid-cols-3 gap-6 pt-6">
+                <div>
+                  <div className="text-3xl font-bold text-primary">500+</div>
+                  <div className="text-sm text-muted-foreground">Авто покрашено</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-primary">12</div>
+                  <div className="text-sm text-muted-foreground">Лет опыта</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-primary">98%</div>
+                  <div className="text-sm text-muted-foreground">Довольных клиентов</div>
+                </div>
+              </div>
+            </div>
+            <div className="relative animate-scale-in">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl"></div>
+              <img 
+                src="https://cdn.poehali.dev/projects/0fc07943-09b3-45db-910b-3d60e60920f1/files/6b57828f-99fb-48c0-98af-387e4733ea5f.jpg"
+                alt="Покрасочный цех"
+                className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="py-20 px-4 bg-card/30">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4">Наши услуги</Badge>
+            <h2 className="text-4xl font-bold mb-4">Что мы предлагаем</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Полный спектр услуг по покраске и восстановлению лакокрасочного покрытия автомобилей
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => (
+              <Card key={index} className="hover:shadow-lg transition-all hover:-translate-y-1 bg-card/80 backdrop-blur">
+                <CardHeader>
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <Icon name={service.icon} className="text-primary" size={24} />
+                  </div>
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    {service.description}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4">Прайс-лист</Badge>
+            <h2 className="text-4xl font-bold mb-4">Наши цены</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Выберите оптимальный пакет услуг для вашего автомобиля
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {pricing.map((plan, index) => (
+              <Card 
+                key={index} 
+                className={`relative ${plan.popular ? 'border-primary shadow-lg scale-105' : ''} bg-card/80 backdrop-blur`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <Badge className="bg-accent">Популярный</Badge>
+                  </div>
+                )}
+                <CardHeader>
+                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                  <div className="text-3xl font-bold text-primary mt-2">{plan.price}</div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <Icon name="Check" size={16} className="text-primary" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className="w-full mt-6" variant={plan.popular ? "default" : "outline"}>
+                    Выбрать пакет
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" className="py-20 px-4 bg-card/30">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4">Наши работы</Badge>
+            <h2 className="text-4xl font-bold mb-4">Портфолио</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Примеры выполненных работ по покраске автомобилей
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {portfolio.map((item, index) => (
+              <Card key={index} className="overflow-hidden group hover:shadow-xl transition-all bg-card/80 backdrop-blur">
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <div>
+                      <h3 className="text-xl font-bold mb-1">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <Badge className="mb-4">Контакты</Badge>
+              <h2 className="text-4xl font-bold mb-6">Свяжитесь с нами</h2>
+              <p className="text-muted-foreground mb-8">
+                Оставьте заявку и мы свяжемся с вами в ближайшее время для уточнения деталей
+              </p>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Icon name="MapPin" className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <div className="font-semibold mb-1">Адрес</div>
+                    <div className="text-muted-foreground">г. Москва, ул. Автомобильная, 15</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Icon name="Phone" className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <div className="font-semibold mb-1">Телефон</div>
+                    <div className="text-muted-foreground">+7 (495) 123-45-67</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Icon name="Clock" className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <div className="font-semibold mb-1">Режим работы</div>
+                    <div className="text-muted-foreground">Пн-Сб: 9:00 - 20:00, Вс: 10:00 - 18:00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <Card className="bg-card/80 backdrop-blur">
+              <CardHeader>
+                <CardTitle>Оставить заявку</CardTitle>
+                <CardDescription>Заполните форму и мы перезвоним вам</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <Input 
+                      placeholder="Ваше имя"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    />
+                  </div>
+                  <div>
+                    <Input 
+                      placeholder="Телефон"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    />
+                  </div>
+                  <div>
+                    <Textarea 
+                      placeholder="Расскажите о вашем автомобиле и требуемых работах"
+                      rows={4}
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    />
+                  </div>
+                  <Button type="submit" className="w-full">
+                    <Icon name="Send" size={16} className="mr-2" />
+                    Отправить заявку
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-border py-8 px-4">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-2">
+              <Icon name="Paintbrush" className="text-primary" size={24} />
+              <span className="font-bold">AutoPaint Pro</span>
+            </div>
+            <div className="text-sm text-muted-foreground">
+              © 2024 AutoPaint Pro. Все права защищены.
+            </div>
+            <div className="flex gap-4">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Icon name="Instagram" size={20} />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Icon name="Facebook" size={20} />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Icon name="Mail" size={20} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
