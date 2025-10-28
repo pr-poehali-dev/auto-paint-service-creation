@@ -147,14 +147,14 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in">
               <Badge className="bg-primary/10 text-primary border-primary/20">
-                Профессиональная покраска автомобилей
+                Частный мастер по покраске автомобилей
               </Badge>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                Идеальное покрытие <span className="text-primary">для вашего авто</span>
+                Качественная покраска <span className="text-primary">по честной цене</span>
               </h1>
               <p className="text-lg text-muted-foreground">
-                Современное оборудование, опытные мастера и гарантия качества. 
-                Вернем вашему автомобилю заводской блеск.
+                Работаю на профессиональном оборудовании. 5 лет опыта и индивидуальный подход к каждому автомобилю. 
+                Гарантирую качество работы.
               </p>
               <div className="flex gap-4">
                 <Button size="lg" className="bg-primary hover:bg-primary/90">
@@ -293,7 +293,7 @@ const Index = () => {
               <Badge className="mb-4">Контакты</Badge>
               <h2 className="text-4xl font-bold mb-6">Свяжитесь с нами</h2>
               <p className="text-muted-foreground mb-8">
-                Оставьте заявку и мы свяжемся с вами в ближайшее время для уточнения деталей
+                Оставьте заявку и я свяжусь с вами в ближайшее время для уточнения деталей
               </p>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -328,7 +328,7 @@ const Index = () => {
             <Card className="bg-card/80 backdrop-blur">
               <CardHeader>
                 <CardTitle>Оставить заявку</CardTitle>
-                <CardDescription>Заполните форму и мы перезвоним вам</CardDescription>
+                <CardDescription>Заполните форму и я перезвоню вам</CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-4">
