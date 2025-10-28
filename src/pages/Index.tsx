@@ -168,11 +168,11 @@ const Index = () => {
               </div>
               <div className="grid grid-cols-3 gap-6 pt-6">
                 <div>
-                  <div className="text-3xl font-bold text-primary">500+</div>
+                  <div className="text-3xl font-bold text-primary">100+</div>
                   <div className="text-sm text-muted-foreground">Авто покрашено</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary">12</div>
+                  <div className="text-3xl font-bold text-primary">5</div>
                   <div className="text-sm text-muted-foreground">Лет опыта</div>
                 </div>
                 <div>
