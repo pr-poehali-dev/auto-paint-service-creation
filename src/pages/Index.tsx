@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
 
@@ -12,6 +13,7 @@ const Index = () => {
     phone: "",
     message: ""
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const services = [
     {
@@ -92,10 +94,59 @@ const Index = () => {
             <a href="#portfolio" className="hover:text-primary transition-colors">Портфолио</a>
             <a href="#contacts" className="hover:text-primary transition-colors">Контакты</a>
           </div>
-          <Button size="sm">
-            <Icon name="Phone" size={16} className="mr-2" />
-            Позвонить
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button size="sm" className="hidden sm:flex">
+              <Icon name="Phone" size={16} className="mr-2" />
+              Позвонить
+            </Button>
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button size="sm" variant="ghost" className="md:hidden">
+                  <Icon name="Menu" size={24} />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <nav className="flex flex-col gap-6 mt-8">
+                  <a 
+                    href="#services" 
+                    className="text-lg hover:text-primary transition-colors flex items-center gap-3"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon name="Wrench" size={20} />
+                    Услуги
+                  </a>
+                  <a 
+                    href="#pricing" 
+                    className="text-lg hover:text-primary transition-colors flex items-center gap-3"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon name="DollarSign" size={20} />
+                    Цены
+                  </a>
+                  <a 
+                    href="#portfolio" 
+                    className="text-lg hover:text-primary transition-colors flex items-center gap-3"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon name="Image" size={20} />
+                    Портфолио
+                  </a>
+                  <a 
+                    href="#contacts" 
+                    className="text-lg hover:text-primary transition-colors flex items-center gap-3"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon name="Mail" size={20} />
+                    Контакты
+                  </a>
+                  <Button className="mt-4 w-full">
+                    <Icon name="Phone" size={16} className="mr-2" />
+                    Позвонить
+                  </Button>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </nav>
       </header>
 
