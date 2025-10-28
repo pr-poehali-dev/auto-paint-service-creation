@@ -67,6 +67,27 @@ const Index = () => {
     }
   ];
 
+  const reviews = [
+    {
+      author: "Дмитрий",
+      rating: 5,
+      text: "Отличная работа! Покрасил крыло и дверь, всё сделано качественно, цвет подобран идеально. Цена адекватная.",
+      date: "2 недели назад"
+    },
+    {
+      author: "Алексей",
+      rating: 5,
+      text: "Профессиональный мастер, делает всё аккуратно. Красил бампер, результат превзошёл ожидания. Рекомендую!",
+      date: "1 месяц назад"
+    },
+    {
+      author: "Сергей",
+      rating: 5,
+      text: "Обращался за полной покраской. Работа выполнена на высшем уровне, сроки соблюдены. Очень доволен!",
+      date: "3 месяца назад"
+    }
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
@@ -255,10 +276,50 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <Badge className="mb-4">Отзывы</Badge>
+            <h2 className="text-4xl font-bold mb-4">Что говорят клиенты</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Реальные отзывы моих клиентов с Авито
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {reviews.map((review, index) => (
+              <Card key={index} className="bg-card/80 backdrop-blur">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <CardTitle className="text-lg">{review.author}</CardTitle>
+                    <div className="flex gap-1">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Icon key={i} name="Star" size={16} className="text-accent fill-accent" />
+                      ))}
+                    </div>
+                  </div>
+                  <CardDescription className="text-xs text-muted-foreground">{review.date}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm">{review.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="text-center">
+            <Button variant="outline" asChild>
+              <a href="https://www.avito.ru/sergiev_posad/predlozheniya_uslug/byudzhetnaya_kachestvennaya_pokraska_avto._avtomalyar_3535025776" target="_blank" rel="noopener noreferrer">
+                <Icon name="ExternalLink" size={16} className="mr-2" />
+                Все отзывы на Авито
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <section id="portfolio" className="py-20 px-4 bg-card/30">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <Badge className="mb-4">Наши работы</Badge>
+            <Badge className="mb-4">Мои работы</Badge>
             <h2 className="text-4xl font-bold mb-4">Портфолио</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Примеры выполненных работ по покраске автомобилей
