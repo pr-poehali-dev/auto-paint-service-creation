@@ -78,7 +78,7 @@ const Index = () => {
         <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Icon name="Paintbrush" className="text-primary" size={32} />
-            <span className="text-xl font-bold">AutoPaint Pro</span>
+            <span className="text-xl font-bold">Вася-красит</span>
           </div>
           <div className="hidden md:flex gap-6">
             <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
@@ -371,10 +371,10 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
               <Icon name="Paintbrush" className="text-primary" size={24} />
-              <span className="font-bold">AutoPaint Pro</span>
+              <span className="font-bold">Вася-красит</span>
             </div>
             <div className="text-sm text-muted-foreground">
-              © 2024 AutoPaint Pro. Все права защищены.
+              © 2024 Вася-красит. Все права защищены.
             </div>
             <div className="flex gap-4">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
