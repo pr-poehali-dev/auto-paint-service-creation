@@ -39,22 +39,15 @@ const Index = () => {
   ];
 
   const pricing = [
-    {
-      name: "Базовый",
-      price: "от 10 000 ₽",
-      features: ["1 элемент", "Локальный ремонт", "Подбор цвета", "Гарантия 6 мес"]
-    },
-    {
-      name: "Стандарт",
-      price: "от 30 000 ₽",
-      features: ["3 элемента", "Полировка", "Антикор обработка", "Гарантия 1 год"],
-      popular: true
-    },
-    {
-      name: "Премиум",
-      price: "от 120 000 ₽",
-      features: ["Полная покраска", "Керамика", "Детейлинг", "Гарантия 2 года"]
-    }
+    { service: "Окраска одного элемента", price: "от 10 000 ₽" },
+    { service: "Окраска двух элементов", price: "от 18 000 ₽" },
+    { service: "Окраска трех элементов", price: "от 26 000 ₽" },
+    { service: "Полная покраска автомобиля", price: "от 120 000 ₽" },
+    { service: "Локальный ремонт (до 10 см)", price: "от 5 000 ₽" },
+    { service: "Подбор цвета по коду", price: "от 1 500 ₽" },
+    { service: "Антикоррозийная обработка", price: "от 8 000 ₽" },
+    { service: "Полировка кузова", price: "от 15 000 ₽" },
+    { service: "Керамическое покрытие", price: "от 25 000 ₽" }
   ];
 
   const portfolio = [
@@ -234,40 +227,32 @@ const Index = () => {
             <Badge className="mb-4">Прайс-лист</Badge>
             <h2 className="text-4xl font-bold mb-4">Наши цены</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Выберите оптимальный пакет услуг для вашего автомобиля
+              Стоимость работ по покраске автомобилей
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {pricing.map((plan, index) => (
-              <Card 
-                key={index} 
-                className={`relative ${plan.popular ? 'border-primary shadow-lg scale-105' : ''} bg-card/80 backdrop-blur`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-accent">Популярный</Badge>
+          <Card className="max-w-3xl mx-auto bg-card/80 backdrop-blur">
+            <CardContent className="p-0">
+              <div className="divide-y divide-border">
+                {pricing.map((item, index) => (
+                  <div 
+                    key={index} 
+                    className="flex justify-between items-center p-6 hover:bg-muted/50 transition-colors"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Icon name="CheckCircle" className="text-primary" size={20} />
+                      </div>
+                      <span className="text-lg">{item.service}</span>
+                    </div>
+                    <div className="text-2xl font-bold text-primary">{item.price}</div>
                   </div>
-                )}
-                <CardHeader>
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <div className="text-3xl font-bold text-primary mt-2">{plan.price}</div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <Icon name="Check" size={16} className="text-primary" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full mt-6" variant={plan.popular ? "default" : "outline"}>
-                    Выбрать пакет
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+          <p className="text-center text-muted-foreground mt-8">
+            Точная стоимость рассчитывается после осмотра автомобиля
+          </p>
         </div>
       </section>
 
